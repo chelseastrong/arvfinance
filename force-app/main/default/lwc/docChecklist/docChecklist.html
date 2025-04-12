@@ -35,20 +35,11 @@
                 </thead>
                 <tbody>
                     <template for:each={checklists} for:item="checklist">
-                        <tr key={checklist.Id} class="slds-hint-parent">
-                            <td data-label="File Name" >
-                                <div title={checklist.Name}>{checklist.Name}</div>
-                            </td>
-                            <td data-label="Status" >
-                                    <lightning-combobox 
-                                        name="status"    
-                                        value={checklist.Status__c}
-                                        variant="label-hidden"
-                                        options={statusOptions}
-                                        onchange={handleStatusChange}
-                                    ></lightning-combobox>
-                            </td>
-                        </tr>
+                        <c-doc-checklist-row 
+                            key ={checklist.Id} 
+                            checklist={checklist}
+                            onstatuschange={handleStatusChange}
+                        ></c-doc-checklist-row>
                     </template>
                 </tbody>
             </table>

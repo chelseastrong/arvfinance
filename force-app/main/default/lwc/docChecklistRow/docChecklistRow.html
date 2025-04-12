@@ -1,0 +1,14 @@
+<template>
+        <td data-label="File Name" >
+            <div title={checklist.Name}>{checklist.Name}</div>
+        </td>
+        <td data-label="Status" >
+                <lightning-combobox 
+                    name="status"    
+                    value={checklist.Status__c}
+                    variant="label-hidden"
+                    options={statusOptions}
+                    onchange={handleStatusChange}
+                ></lightning-combobox>
+        </td>
+</template>

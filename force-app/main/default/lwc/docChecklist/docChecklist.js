@@ -21,7 +21,7 @@ export default class DocChecklist extends LightningElement {
         }
     }
 
-    handleStatusChange(event) {
+    handleChecklistChange(event) {
         const index =  this._changed.findIndex(item => item.Id === event.detail.Id);
         if (index === -1) {
             this._changed.push(event.detail);

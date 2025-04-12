@@ -20,16 +20,15 @@ export default class DocChecklistRow extends LightningElement {
         }
     }
 
-    handleStatusChange(event) {
+    handleChecklistChange(event) {
         this.dispatchEvent(
-            new CustomEvent('statuschange', {
+            new CustomEvent('checklistchange', {
                 detail: {
                     Id: this.checklist.Id,
                     Status__c: event.detail.value
                 }
             })
         )
-        console.log('handleStatusChange', event.detail.value);
-        //this.checklist.Id = event.detail.value;
+        console.log('handleChecklistChange', event.detail.value);
     }
 }

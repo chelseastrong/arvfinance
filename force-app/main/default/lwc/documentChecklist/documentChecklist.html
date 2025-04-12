@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-box slds-theme_default slds-scrollable_x">
+    <lightning-card title="Document Checklist" icon-name="standard:drafts">
+                <c-custom-datatable
+                    key-field="Id"
+                    data={checklists}
+                    columns={columns}
+                    onsave={handleSave}
+                    draft-values={draftValues}
+                    hide-checkbox-column
+            ></c-custom-datatable>
+    </lightning-card>
+    </div>  
+</template>

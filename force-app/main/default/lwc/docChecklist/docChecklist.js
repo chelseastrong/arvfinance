@@ -1,18 +1,23 @@
-import { LightningElement } from 'lwc';
+import { api, LightningElement, wire } from 'lwc';
+import getChecklistRecords from '@salesforce/apex/DocumentChecklistController.getChecklistRecords';
 
 export default class DocChecklist extends LightningElement {
-    checklists = [
-        {
-            Id: "0",
-            Name: "Purchase Agreement",
-            Status__c: "Pending",
-          },
-        {
-            Id: "1",
-            Name: "Construction Budget",
-            Status__c: "Accepted",
+    @api recordId;
+
+    checklists = [];
+
+    @wire(getChecklistRecords, {opportunityId: '$recordId'})
+    processGetChecklists({error, data}) {
+        if (data) {
+        this.checklists = data;
+            console.log('data',data);
         }
-    ];
+        if (error) {
+            console.error(error);
+        }
+    }
+
+
 
     statusOptions = [
         {

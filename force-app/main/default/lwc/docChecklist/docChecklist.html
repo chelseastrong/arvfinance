@@ -1,30 +1,57 @@
 <template>
-    <div class="slds-box slds-theme_default slds-scrollable_x">
-    <lightning-card title="Document Checklist" icon-name="standard:drafts">
-                <table class="slds-table slds-table_cell-buffer slds-table_bordered" style="width: 100%;">
-                    <thead>
-                        <tr class="slds-line-height_reset">
-                            <th class="" scope="col">
-                                <div title="File Name">File Name</div>
-                            </th>
-                            <th class="" scope="col">
-                                <div title="Status">Status</div>
-                            </th>
+    <article class="slds-card slds-theme_default slds-card_boundary checklist-border">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+                <lightning-icon 
+                    icon-name="standard:drafts" 
+                    size="small" 
+                    alternative-text="Drafts">
+                </lightning-icon>
+            </div>
+            <div class="slds-media__body">
+              <h2 class="slds-card__header-title">
+                <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Document Checklist">
+                  <span>Document Checklist</span>
+                </a>
+              </h2>
+            </div>
+            <div class="slds-no-flex">
+              <button class="slds-button slds-button_neutral">Add Document</button>
+            </div>
+          </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered" style="width: 100%;">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div title="File Name">File Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div title="Status">Status</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={checklists} for:item="checklist">
+                        <tr key={checklist.Id} class="slds-hint-parent">
+                            <td data-label="File Name" >
+                                <div title={checklist.Name}>{checklist.Name}</div>
+                            </td>
+                            <td data-label="Status" >
+                                    <lightning-combobox 
+                                        name="status"    
+                                        value={checklist.Status__c}
+                                        variant="label-hidden"
+                                        options={statusOptions}
+                                        onchange={handleStatusChange}
+                                    ></lightning-combobox>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <template for:each={checklists} for:item="checklist">
-                            <tr key={checklist.Id} class="slds-hint-parent">
-                                <td data-label="File Name" >
-                                    <div title={checklist.Name}>{checklist.Name}</div>
-                                </td>
-                                <td data-label="Status" >
-                                    <div title={checklist.Status__c}>{checklist.Status__c}</div>
-                                </td>
-                            </tr>
-                        </template>
-                    </tbody>
-                </table>
-    </lightning-card>
-    </div>  
+                    </template>
+                </tbody>
+            </table>
+        </div>
+      </article>
 </template>

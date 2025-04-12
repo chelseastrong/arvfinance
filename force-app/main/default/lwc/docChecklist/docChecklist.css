@@ -1,0 +1,7 @@
+:host {
+    --slds-c-card-header-spacing-block-start: 1rem;
+} 
+
+.checklist-border {
+    border: 1px solid var(--slds-g-color-border-1) !important;
+  }

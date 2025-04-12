@@ -13,4 +13,19 @@ export default class DocChecklist extends LightningElement {
             Status__c: "Accepted",
         }
     ];
+
+    statusOptions = [
+        {
+            label: 'Pending',
+            value: 'Pending'
+        },
+        {
+            label: 'Accepted',
+            value: 'Accepted'
+        },
+        {
+            label: 'Rejected',
+            value: 'Rejected'
+        }
+    ];
 }

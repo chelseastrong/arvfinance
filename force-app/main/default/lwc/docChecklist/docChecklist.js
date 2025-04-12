@@ -6,6 +6,8 @@ export default class DocChecklist extends LightningElement {
     @api recordId;
 
     checklists = [];
+
+    _changed = [];
     
 
     @wire(getChecklistRecords, {opportunityId: '$recordId'})
@@ -20,6 +22,15 @@ export default class DocChecklist extends LightningElement {
     }
 
     handleStatusChange(event) {
-        console.log('parent handleStatusChange', event.detail);
+        const index =  this._changed.findIndex(item => item.Id === event.detail.Id);
+        if (index === -1) {
+            this._changed.push(event.detail);
+        } else {
+            this._changed[index] = {
+                ...this._changed[index],
+                ...event.detail
+            }
+        }
+        console.log(this._changed);
     }
 }

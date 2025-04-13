@@ -35,6 +35,15 @@ export default class DocChecklist extends LightningElement {
         this.handleSave(Object.values(this._changed));
     }
 
+    async handleSave(checklist) {
+        console.log('handleSave', checklist);
+        try {
+            await saveChecklistRecords({documentChecklists: checklist})
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     async openModal() {
         const result = await myModal.open({
             size: 'small',

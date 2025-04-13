@@ -8,4 +8,10 @@ public with sharing class DocumentChecklistController {
             ORDER BY Name
         ];
     }
+
+    @AuraEnabled
+    public static void saveChecklistRecords(List<Document_Checklist__c> documentChecklists){ 
+        system.debug('document checklist: ' + documentChecklists);
+        update documentChecklists;
+    }
 }

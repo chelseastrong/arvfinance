@@ -1,5 +1,6 @@
 import { api, LightningElement, wire } from 'lwc';
 import getChecklistRecords from '@salesforce/apex/DocumentChecklistController.getChecklistRecords';
+import saveChecklistRecords from '@salesforce/apex/DocumentChecklistController.saveChecklistRecords';
 
 
 export default class DocChecklist extends LightningElement {
@@ -7,7 +8,7 @@ export default class DocChecklist extends LightningElement {
 
     checklists = [];
 
-    _changed = [];
+    _changed = {};
     
 
     @wire(getChecklistRecords, {opportunityId: '$recordId'})
@@ -22,15 +23,14 @@ export default class DocChecklist extends LightningElement {
     }
 
     handleChecklistChange(event) {
-        const index =  this._changed.findIndex(item => item.Id === event.detail.Id);
-        if (index === -1) {
-            this._changed.push(event.detail);
-        } else {
-            this._changed[index] = {
-                ...this._changed[index],
-                ...event.detail
-            }
-        }
-        console.log(this._changed);
+        const Id = event.detail.Id;
+        console.log('parent handleChecklistChange', Id);
+        this._changed[Id] = {
+            ...this._changed[Id],
+            ...event.detail,
+        };
+        console.log('handleSave value: ', Object.values(this._changed));
+        this.handleSave(Object.values(this._changed));
     }
+
 }

@@ -10,5 +10,7 @@ private class DocumentChecklistControllerTest {
 
         List<Document_Checklist__c> dcs = DocumentChecklistController.getChecklistRecords(opp.Id);
         System.assertEquals(1, dcs.size(),'size failed');
+
+        DocumentChecklistController.saveChecklistRecords(dcs);
     }
 }

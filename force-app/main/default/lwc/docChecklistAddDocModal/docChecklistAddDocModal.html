@@ -1,4 +1,53 @@
 <template>
-    <lightning-modal-header label="Add Documents"></lightning-modal-header>
-    <lightning-modal-body> Content </lightning-modal-body>
+    <lightning-modal-header label={content}></lightning-modal-header>
+    <lightning-modal-body>
+    <form>
+        <div class="slds-box slds-theme_default">
+            <lightning-input 
+                name="firstName" 
+                label="First Name" 
+                value="">
+            </lightning-input>
+            <lightning-input 
+                name="lastName" 
+                label="Last Name" 
+                value="">
+            </lightning-input>
+            <lightning-input 
+                type="date" 
+                name="birthdate" 
+                label="Birthdate" 
+                value="">
+            </lightning-input>
+            <lightning-input 
+                type="email" 
+                name="emailAddress" 
+                label="Email Address" 
+                value="">
+            </lightning-input>
+            <lightning-input 
+                type="tel" 
+                name="mobile" 
+                label="Mobile" 
+                value="">
+            </lightning-input>
+        </div>
+    </form>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <div class="slds-m-top_small slds-align_absolute-center">
+            <lightning-button 
+                variant="Neutral" 
+                label="Cancel and close" 
+                class="slds-m-left_x-small" 
+                onclick={handleClose}>
+            </lightning-button>
+            <lightning-button 
+                variant="brand" 
+                class="slds-m-left_x-small" 
+                label="Save" 
+                onclick={handleSave}>
+            </lightning-button>
+        </div>
+    </lightning-modal-footer>
 </template>

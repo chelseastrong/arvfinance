@@ -1,10 +1,13 @@
 import { api } from 'lwc';
-import { LightningModal } from 'lightning/modal';
+import LightningModal from 'lightning/modal';
 
-export default class DocChecklistAddDocModal extends LightningModal {
-    @api oppty;
+export default class MyModal extends LightningModal {
+    @api content;
 
-    connectedCallBack() {
-        console.log('Modal Component');
+    handleClose() {
+        this.close('done');
+    }
+
+    handleSave() {
     }
 }

@@ -1,7 +1,8 @@
 import { api, LightningElement, wire } from 'lwc';
 import getChecklistRecords from '@salesforce/apex/DocumentChecklistController.getChecklistRecords';
 import saveChecklistRecords from '@salesforce/apex/DocumentChecklistController.saveChecklistRecords';
-import myModal from 'c/baseLightningModal';
+import myModal from 'c/docChecklistAddDocModal';
+//import myModal from 'c/baseLightningModal';
 
 
 export default class DocChecklist extends LightningElement {
@@ -37,8 +38,8 @@ export default class DocChecklist extends LightningElement {
     async openModal() {
         const result = await myModal.open({
             size: 'small',
-            description: 'Accessible description of modal\'s purpose',
-            content: 'Lead Generation Form',
+            description: 'Add Documents',
+            content: 'Add Documents',
         });
         console.log(result);
     }

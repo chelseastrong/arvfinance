@@ -3,12 +3,21 @@ import LightningModal from 'lightning/modal';
 
 export default class MyModal extends LightningModal {
     @api content;
-    @track inputVariables = [];
+    @api recordId;
 
     get inputVariables() {
         return [
-            { name: 'recordId', type: 'String', value: '' }
+            { name: 'recordId', type: 'String', value: this.recordId }
         ];
+    }
+
+    //This handles the behavior after the flow is finished
+    handleStatusChange(event){
+        console.log('handleStatusChange', event.detail);
+        if(event.detail.status === 'FINISHED') {
+            //Close the modal
+            this.close('FINISHED');
+        }
     }
 
     handleClose() {

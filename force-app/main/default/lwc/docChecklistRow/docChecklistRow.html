@@ -1,4 +1,7 @@
 <template>
+    <td data-label="Received" >
+        <div title={checklist.Received__c}>{checklist.Received__c}</div>
+    </td>
         <td data-label="File Name" >
             <div title={checklist.Name}>{checklist.Name}</div>
         </td>
@@ -10,5 +13,8 @@
                     options={statusOptions}
                     onchange={handleChecklistChange}
                 ></lightning-combobox>
+        </td>
+        <td data-label="Notes" >
+            <div title={checklist.Notes__c}>{checklist.Notes__c}</div>
         </td>
 </template>

@@ -1,7 +1,7 @@
 <template>
-    <td data-label="Received" >
-        <div title={checklist.Received__c}>{checklist.Received__c}</div>
-    </td>
+        <td data-label="Received" class="checkbox-cell">
+            <lightning-input type="checkbox" name={checklist.Received__c} checked={checklist.Received__c} class="checkbox-cell"></lightning-input>
+        </td>
         <td data-label="File Name" >
             <div title={checklist.Name}>{checklist.Name}</div>
         </td>
@@ -14,7 +14,14 @@
                     onchange={handleChecklistChange}
                 ></lightning-combobox>
         </td>
-        <td data-label="Notes" >
-            <div title={checklist.Notes__c}>{checklist.Notes__c}</div>
+        <td data-label="Notes">
+            <div class="slds-form-element slds-form-element__control">
+                <textarea 
+                    name="Notes"
+                    rows="1"
+                    class="slds-textarea align-top"
+                    oninput={autoGrow}
+                >{checklist.Notes__c}</textarea>
+            </div>
         </td>
 </template>

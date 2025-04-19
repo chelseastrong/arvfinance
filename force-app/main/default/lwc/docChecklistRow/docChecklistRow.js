@@ -31,4 +31,11 @@ export default class DocChecklistRow extends LightningElement {
         )
         console.log('handleChecklistChange', event.detail.value);
     }
+
+    autoGrow(event) {
+        const textarea = event.target;
+        textarea.style.height = 'auto'; // reset first
+        textarea.style.height = `${textarea.scrollHeight}px`; // set new height
+    }
+
 }

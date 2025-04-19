@@ -5,3 +5,7 @@
 .checklist-border {
     border: 1px solid var(--slds-g-color-border-1) !important;
   }
+
+.checkbox-cell {
+    text-align: center !important;
+}
